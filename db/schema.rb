@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_23_150529) do
+ActiveRecord::Schema.define(version: 2021_12_23_185442) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 2021_12_23_150529) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "remarks", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_remarks_on_post_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "remarks", "posts"
 end
