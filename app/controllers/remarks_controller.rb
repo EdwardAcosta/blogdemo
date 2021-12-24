@@ -1,2 +1,0 @@
-class RemarksController < ApplicationController
-end
